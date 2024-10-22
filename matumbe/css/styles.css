@@ -31,7 +31,7 @@ body {
     color: #0024A4;
 }
 
-.header .profile {
+.profile {
     background-color: #e0e0e0;
     border-radius: 50%;
     width: 40px;
@@ -41,4 +41,5 @@ body {
     align-items: center;
     font-weight: bold;
     color: #0024A4;
+    cursor: pointer;
 }

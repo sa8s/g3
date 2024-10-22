@@ -78,7 +78,7 @@
             <a href="./add.html">Agregar palabras</a>
             <a href="./speak.html">Pronunciación</a>
         </div>
-        <div class="profile">DM</div>
+        <div onclick="handleClick()" class="profile">DM</div>
     </div>
     <div class="container">
         <h1>¡Aprende palabras nuevas!</h1>
@@ -102,6 +102,12 @@
                 scrambled it to make a type specimen book.</p>
         </div>
     </div>
+
+    <script>
+        function handleClick() {
+            window.location.href = './user.html'
+        }
+    </script>
 </body>
 
 </html>

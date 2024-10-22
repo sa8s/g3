@@ -108,7 +108,7 @@
             <a href="./add.html">Agregar palabras</a>
             <b><a href="./speak.html">Pronunciación</a></b>
         </div>
-        <div class="profile">DM</div>
+        <div onclick="handleClick()" class="profile">DM</div>
     </div>
     <div class="container">
         <h1>¡Habla como un nativo!</h1>
@@ -130,6 +130,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function handleClick() {
+            window.location.href = './user.html'
+        }
+    </script>
 </body>
 
 </html>
