@@ -1,0 +1,176 @@
+<html>
+
+<head>
+    <title>Matumbe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 50px;
+        }
+
+        .profile-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 500px;
+        }
+
+        .profile-card .back-button {
+            display: flex;
+            align-items: center;
+            color: #0056b3;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .profile-card .back-button i {
+            margin-right: 5px;
+        }
+
+        .profile-card .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            margin-right: 20px;
+        }
+
+        .profile-card .profile-header .info {
+            font-size: 18px;
+        }
+
+        .profile-card .profile-header .info .name {
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        .profile-card .profile-header .info .email {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .profile-card .form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .profile-card .form .input-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-card .form .input-group label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .profile-card .form .input-group input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .profile-card .form .input-group.full-width {
+            flex: 100%;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .save {
+            background-color: #a3a3a3;
+            color: #333;
+        }
+
+        .logout {
+            background-color: #ff4d4d;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">Matumbe</div>
+        <div class="nav">
+            <a href="./translate.html">Traductor</a>
+            <b><a href="./add.html">Agregar palabras</a></b>
+            <a href="./speak.html">Pronunciación</a>
+        </div>
+        <div onclick="handleClick()" class="profile">DM</div>
+    </div>
+
+    <div class="container">
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile avatar">DM</div>
+                <div class="info">
+                    <div class="name">Usuario 1</div>
+                    <div class="email">usuario1@gmail.com</div>
+                </div>
+            </div>
+            <div class="form">
+                <div class="input-group">
+                    <label for="nombre">NOMBRE</label>
+                    <input type="text" id="nombre">
+                </div>
+                <div class="input-group">
+                    <label for="apellido">APELLIDO</label>
+                    <input type="text" id="apellido">
+                </div>
+                <div class="input-group">
+                    <label for="palabras-favoritas">PALABRAS FAVORITAS</label>
+                    <input type="text" id="palabras-favoritas">
+                </div>
+                <div class="input-group">
+                    <label for="localidad">LOCALIDAD</label>
+                    <input type="text" id="localidad">
+                </div>
+                <div class="input-group full-width">
+                    <button class="btn save"><b>LIBRETA</b></button>
+                </div>
+                <div class="input-group full-width">
+                    <button class="btn logout" onclick="location.href='./index.html'"><b>CERRAR SESIÓN</b></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleClick() {
+            window.location.href = './user.html'
+        }
+    </script>
+</body>
+
+</html>

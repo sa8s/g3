@@ -11,7 +11,7 @@
         }
 
         .bg {
-            background-image: url('images/background-image.jpg');
+            background-image: url('../images/background-image.jpg');
             height: 100%;
             background-position: center;
             background-repeat: no-repeat;
@@ -36,6 +36,7 @@
 
         .form-container h2 {
             margin-bottom: 20px;
+            color: white;
         }
 
         .form-container input[type="text"],
@@ -83,13 +84,15 @@
                         <input type="text" placeholder="Localidad">
                     </div>
                     <div>
-                        <button type="button" class="cancel-btn">Cancelar</button>
-                        <button type="submit" class="register-btn">Registrarse</button>
+                        <button type="button" class="cancel-btn" onclick="location.href='./index.html'">Cancelar</button>
+                        <button type="button" class="register-btn" onclick="location.href='./translate.html'">Registrarse</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+
 </body>
 
 </html>

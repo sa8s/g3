@@ -96,7 +96,7 @@
             <b><a href="./add.html">Agregar palabras</a></b>
             <a href="./speak.html">Pronunciación</a>
         </div>
-        <div class="profile">DM</div>
+        <div onclick="handleClick()" class="profile">DM</div>
     </div>
     <div class="container">
         <div class="form-container">
@@ -141,6 +141,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function handleClick() {
+            window.location.href = './user.html'
+        }
+    </script>
 </body>
 
 </html>
