@@ -159,9 +159,11 @@
                 <div class="input-group full-width">
                     <button class="btn save"><b>LIBRETA</b></button>
                 </div>
-                <div class="input-group full-width">
-                    <button class="btn logout" onclick="location.href='./'"><b>CERRAR SESIÓN</b></button>
-                </div>
+                <form action="/signout" method="POST">
+                    <div class="input-group full-width">
+                        <button type="submit" class="btn logout"><b>CERRAR SESIÓN</b></button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

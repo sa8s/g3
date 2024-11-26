@@ -144,6 +144,16 @@ app.post('/login', (req, res) => {
         });
 });
 
+app.post('/signout', async (req, res) => {
+    try {
+        await auth.signOut()
+    } catch (error) {
+        // Fail open
+    } finally {
+        res.redirect("/")
+    }
+});
+
 // Add a document to Firestore
 app.post('/add', protectedRoute, async (req, res) => {
     const { collection, data } = req.body;
