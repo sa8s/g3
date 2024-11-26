@@ -5,6 +5,8 @@ const firebaseApp = require('firebase/app');
 const firebaseAuth = require('firebase/auth');
 const path = require('path');
 
+const usersCollection = "users"
+
 // Service Account Key
 const serviceAccount = require('./serviceAccountKey.json');
 
@@ -83,44 +85,87 @@ const unsignedRoute = async (req, res, next) => {
 
 // Routes
 app.get('/', unsignedRoute, async (req, res) => {
-    res.render(path.join(__dirname, 'views', 'index.ejs'));
+    res.render(path.join(__dirname, 'views', 'index.ejs'), { errorMessage: null });
 });
 
-app.get('/translate', protectedRoute, (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'translate.html'));
+app.get('/translate', protectedRoute, async (req, res) => {
+    res.render(path.join(__dirname, 'views', 'translate.ejs'), { initial: await getInitials(), errorMessage: null });
 });
 
-app.get('/add', protectedRoute, (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'add.html'));
+app.get('/add', protectedRoute, async (req, res) => {
+    res.render(path.join(__dirname, 'views', 'add.ejs'), { initial: await getInitials(), errorMessage: null });
 });
 
-app.get('/speak', protectedRoute, (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'speak.html'));
+app.get('/speak', protectedRoute, async (req, res) => {
+    res.render(path.join(__dirname, 'views', 'speak.ejs'), { initial: await getInitials(), errorMessage: null });
 });
 
-app.get('/user', protectedRoute, (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'user.html'));
+app.get('/user', protectedRoute, async (req, res) => {
+    try {
+        let userData = await getUserData()
+        userData.initial = await getInitials()
+        res.render(path.join(__dirname, 'views', 'user.ejs'), userData);
+    } catch (error) {
+        console.log(error)
+        res.render(path.join(__dirname, 'views', 'user.ejs')), { initial: await getInitials(), name: null, lastname: null, locality: null };
+    }
 });
 
-app.get('/register', unsignedRoute, (req, res) => {
+app.get('/register', unsignedRoute, async (req, res) => {
     res.render(path.join(__dirname, 'views', 'register.ejs'), { errorMessage: null });
 });
 
+
+async function getInitials() {
+    let { name, lastname } = await getUserData()
+    nameInitial = name[0] || ""
+    lastnameInitial = lastname[0] || ""
+
+    return nameInitial + lastnameInitial
+}
+
+async function getUserData() {
+    const userDoc = await db.collection(usersCollection).doc(auth.currentUser.email).get();
+    if (userDoc.empty) {
+        return res.status(404).send({ message: 'No documents found' });
+    }
+
+    let { name, lastname, locality } = userDoc.data()
+    let userData = { name, lastname, locality }
+    userData.email = auth.currentUser.email
+
+    return userData
+}
+
 // User Registration (via Admin SDK)
 app.post('/register', async (req, res) => {
-    const { email, password } = req.body;
-
-    if (!email || !password) {
-        return res.status(400).json({ error: 'Missing email or password' });
-    }
+    const { email, name, password, lastname, locality } = req.body;
 
     try {
         const userRecord = await admin.auth().createUser({ email, password });
         console.log('Successfully created new user:', userRecord.uid);
+        const userData = { email, name, password, lastname, locality }
+        const docRef = await db.collection(usersCollection).doc(email).set(userData);
         res.redirect('/translate');
     } catch (error) {
         console.error('Error creating new user:', error.message);
         res.render('register', { errorMessage: error.message });
+    }
+});
+
+app.post('/users', async (req, res) => {
+    const { name, lastname, locality } = req.body;
+    let userData = null
+
+    try {
+        userData = { name: name, lastname: lastname, locality: locality }
+        const docRef = await db.collection(usersCollection).doc(auth.currentUser.email).update(userData);
+        res.redirect('/user');
+    } catch (error) {
+        console.error('Error creating new user:', error.message);
+        userData.errorMessage = error.message
+        userData.email = auth.currentUser.email
+        res.render('user', userData);
     }
 });
 
@@ -139,8 +184,8 @@ app.post('/login', (req, res) => {
             res.redirect('/translate');
         })
         .catch((error) => {
-            console.error('Error authenticating user:', error.message);
-            res.status(401).json({ error: 'Invalid credentials' });
+            console.log(error)
+            res.render(path.join(__dirname, 'views', 'index.ejs'), { errorMessage: error?.message });
         });
 });
 
