@@ -6,6 +6,7 @@ const firebaseAuth = require('firebase/auth');
 const path = require('path');
 
 const usersCollection = "users"
+const wordsCollection = "words"
 
 // Service Account Key
 const serviceAccount = require('./serviceAccountKey.json');
@@ -115,7 +116,6 @@ app.get('/register', unsignedRoute, async (req, res) => {
     res.render(path.join(__dirname, 'views', 'register.ejs'), { errorMessage: null });
 });
 
-
 async function getInitials() {
     let { name, lastname } = await getUserData()
     nameInitial = name[0] || ""
@@ -196,6 +196,32 @@ app.post('/signout', async (req, res) => {
         // Fail open
     } finally {
         res.redirect("/")
+    }
+});
+
+// Add a document to Firestore
+app.post('/words', protectedRoute, async (req, res) => {
+    console.log(req.body)
+
+    const { word, translation, meaning, language } = req.body;
+
+    let spanishWord = ""
+    let cametsaWord = ""
+
+    if (language === "Español") {
+        spanishWord = word
+        cametsaWord = translation
+    } else {
+        spanishWord = translation
+        cametsaWord = word
+    }
+
+    try {
+        const docRef = await db.collection(wordsCollection).add({ spanishWord, cametsaWord, meaning });
+        res.redirect('/add');
+    } catch (error) {
+        console.error("Error adding document:", error.message);
+        res.render('/add', { errorMessage: error.message });
     }
 });
 
