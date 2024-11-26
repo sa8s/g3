@@ -120,15 +120,10 @@
 
         .btns-div {
             display: flex;
-            flex-direction: column;
-            margin-top: 20px;
-        }
-
-        .btns-div {
-            display: flex;
             flex-direction: row;
             justify-content: flex-end;
             gap: 20px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -153,7 +148,9 @@
                     <div class="email"><%= email %></div>
                 </div>
             </div>
-            <form action="/users" method="POST">
+
+            <!-- Outer form for updating profile -->
+            <form id="outerForm" action="/users" method="POST">
                 <div class="form">
                     <div class="input-group">
                         <label for="nombre">NOMBRE</label>
@@ -171,18 +168,16 @@
                         <label for="localidad">LOCALIDAD</label>
                         <input type="text" name="locality" value="<%= locality %>">
                     </div>
-
                 </div>
                 <div class="btns-div">
-                    <form action="/signout" method="POST">
-                        <div class="input-group full-width">
-                            <button type="submit" class="btn logout"><b>CERRAR SESIÓN</b></button>
-                        </div>
-                    </form>
+                    <button type="submit" class="btn save"><b>Actualizar Perfil</b></button>
+                </div>
+            </form>
 
-                    <div class="input-group full-width">
-                        <button type="submit" class="btn save"><b>Actualizar Perfil</b></button>
-                    </div>
+            
+            <form id="innerForm" action="/signout" method="POST">
+                <div class="btns-div">
+                    <button type="submit" class="btn logout"><b>CERRAR SESIÓN</b></button>
                 </div>
             </form>
         </div>
@@ -190,7 +185,7 @@
 
     <script>
         function handleClick() {
-            window.location.href = './user'
+            window.location.href = './user';
         }
     </script>
 </body>
