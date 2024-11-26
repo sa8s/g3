@@ -109,25 +109,31 @@
             <a href="./add">Agregar palabras</a>
             <b><a href="./speak">Pronunciación</a></b>
         </div>
-        <div onclick="handleClick()" class="profile"><%= initial %></div>
+        <div onclick="handleClick()" class="profile">
+            <%= initial %>
+        </div>
     </div>
     <div class="container">
         <h1>¡Habla como un nativo!</h1>
         <div class="content">
+            <form action="/words" class="validated-form" method="GET">
+                <div class="box">
+                    <label for="word">Palabra (en Español)</label>
+                    <input type="text" name="word">
+                    <button>Buscar</button>
+                </div>
+            </form>
             <div class="box">
-                <label for="word">Palabra (en Kamëntsá)</label>
-                <input type="text" id="word" value="Lorem">
-                <button>Buscar</button>
-            </div>
-            <div class="box">
-                <p>Lorem</p>
+                <p>
+                    <%= spanishWord %>
+                </p>
                 <div>
                     <button class="play-button">Reproducir <i class="fas fa-play"></i></button>
                 </div>
                 <label for="translation">Traducción</label>
-                <input type="text" id="translation" class="translation">
+                <input type="text" value="<%= spanishWord %>" id="translation" class="translation">
                 <label for="meaning">Significado</label>
-                <input type="text" id="meaning" class="meaning">
+                <input type="text" value="<%= meaning %>" id="meaning" class="meaning">
             </div>
         </div>
     </div>
