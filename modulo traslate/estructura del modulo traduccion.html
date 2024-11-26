@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo de Traducción</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Módulo de Traducción</h1>
+    
+    <!-- Barra de búsqueda -->
+    <div class="search-section">
+      <input 
+        type="text" 
+        id="searchBar" 
+        placeholder="Escribe una palabra..." 
+        onkeyup="filterWords()"
+      >
+    </div>
+    
+    <!-- Área de traducción -->
+    <div class="translation-section">
+      <div class="language-box">
+        <h2>Kamentsá</h2>
+        <ul id="kamentsaWords">
+          <!-- Las palabras se cargarán dinámicamente aquí -->
+        </ul>
+      </div>
+      <div class="language-box">
+        <h2>Español</h2>
+        <ul id="spanishWords">
+          <!-- Las palabras se cargarán dinámicamente aquí -->
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Botón de ejemplos -->
+    <div class="example-section">
+      <button id="exampleButton" onclick="showExamples()">Ver Ejemplos</button>
+      <div id="examplesArea" class="hidden">
+        <!-- Ejemplos contextuales -->
+      </div>
+    </div>
+  </div>
+  
+  <!-- Archivo JavaScript -->
+  <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
