@@ -7,6 +7,8 @@
     </title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script>
     <link rel="stylesheet" href="../css/styles.css">
     <style>
         body {
@@ -125,7 +127,7 @@
                 </label>
                 <input name="word" type="text" />
                 <label for="translation">
-                    Traducción (en Kamëntsá)
+                    Traducción
                 </label>
                 <input name="translation" type="text" />
                 <label for="meaning">
@@ -156,5 +158,18 @@
         }
     </script>
 </body>
+
+<% if (errorMessage) { %>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Snackbar.show({
+                text: '<%= errorMessage %>',
+                pos: 'top-center',
+                backgroundColor: '#e74c3c',
+                actionTextColor: '#ffffff'
+            });
+        });
+    </script>
+    <% } %>
 
 </html>

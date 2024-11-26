@@ -24,7 +24,7 @@ const firebaseConfig = {
     projectId: "desarrollo-web-matumbe",
     //storageBucket: "your-storage-bucket",
     //messagingSenderId: "your-messaging-sender-id",
-    appId: "your-app-id",
+    appId: "1097258782904",
 };
 const clientApp = firebaseApp.initializeApp(firebaseConfig);
 const auth = firebaseAuth.getAuth(clientApp);
@@ -98,7 +98,7 @@ app.get('/add', protectedRoute, async (req, res) => {
 });
 
 app.get('/speak', protectedRoute, async (req, res) => {
-    res.render(path.join(__dirname, 'views', 'speak.ejs'), { initial: await getInitials(), errorMessage: null });
+    res.render(path.join(__dirname, 'views', 'speak.ejs'), { initial: await getInitials(), cametsaWord: null, spanishWord: null, meaning: null, errorMessage: null });
 });
 
 app.get('/user', protectedRoute, async (req, res) => {
@@ -185,7 +185,7 @@ app.post('/login', (req, res) => {
         })
         .catch((error) => {
             console.log(error)
-            res.render(path.join(__dirname, 'views', 'index.ejs'), { errorMessage: error?.message });
+            res.redirect("/")
         });
 });
 
@@ -217,11 +217,37 @@ app.post('/words', protectedRoute, async (req, res) => {
     }
 
     try {
-        const docRef = await db.collection(wordsCollection).add({ spanishWord, cametsaWord, meaning });
+        const docRef = await db.collection(wordsCollection).doc(spanishWord).set({ spanishWord, cametsaWord, meaning });
         res.redirect('/add');
     } catch (error) {
         console.error("Error adding document:", error.message);
-        res.render('/add', { errorMessage: error.message });
+        res.render('add', { errorMessage: error.message });
+    }
+});
+
+app.get('/words', protectedRoute, async (req, res) => {
+    const { word, language } = req.query;
+
+
+    try {
+        const wordDoc = await db.collection(wordsCollection).doc(word).get();
+        if (wordDoc.empty) {
+            return res.status(404).send({ message: 'No documents found' });
+        }
+
+        let { cametsaWord, spanishWord, meaning } = wordDoc.data()
+        let newWord = { cametsaWord, spanishWord, meaning }
+        newWord.initial = await getInitials()
+
+        res.render('speak', newWord);
+    } catch (error) {
+        console.error("Error fetching documents:", error.message);
+
+        let data = { cametsaWord: "", spanishWord: "", meaning: "" }
+        data.errorMessage = error.message
+        data.initial = await getInitials()
+
+        res.render(path.join(__dirname, 'views', 'speak.ejs'), data);
     }
 });
 
