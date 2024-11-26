@@ -74,7 +74,7 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            
+
         }
 
         .stats-container .stats .number {
@@ -99,49 +99,56 @@
             <b><a href="./add">Agregar palabras</a></b>
             <a href="./speak">Pronunciación</a>
         </div>
-        <div onclick="handleClick()" class="profile"><%= initial %></div>
-    </div>
-    <div class="container">
-        <div class="form-container">
-            <h2>
-                ¡Añade palabras nuevas!
-            </h2>
-            <label for="language">
-                Idioma original:
-            </label>
-            <select id="language">
-                <option>
-                    Español
-                </option>
-            </select>
-            <label for="word">
-                Palabra
-            </label>
-            <input id="word" type="text" />
-            <label for="translation">
-                Traducción (en Kamëntsá)
-            </label>
-            <input id="translation" type="text" />
-            <label for="meaning">
-                Significado
-            </label>
-            <textarea id="meaning"></textarea>
-            <button>
-                Agregar
-            </button>
+        <div onclick="handleClick()" class="profile">
+            <%= initial %>
         </div>
-        <div class="stats-container">
-            <img alt="Image of a forest with a sunset" height="400" src="../images/icon.jpeg" width="400" />
-            <div class="stats">
-                <div class="number">
-                    10230
-                </div>
-                <div class="text">
-                    Palabras Agregadas
+    </div>
+    <form action="/words" class="validated-form" method="POST">
+        <div class="container">
+            <div class="form-container">
+                <h2>
+                    ¡Añade palabras nuevas!
+                </h2>
+                <label for="language">
+                    Idioma original:
+                </label>
+                <select name="language">
+                    <option>
+                        Español
+                    </option>
+                    <option>
+                        Cametsa
+                    </option>
+                </select>
+                <label for="word">
+                    Palabra
+                </label>
+                <input name="word" type="text" />
+                <label for="translation">
+                    Traducción (en Kamëntsá)
+                </label>
+                <input name="translation" type="text" />
+                <label for="meaning">
+                    Significado
+                </label>
+                <textarea name="meaning"></textarea>
+                <button type="submit">
+                    Agregar
+                </button>
+            </div>
+            <div class="stats-container">
+                <img alt="Image of a forest with a sunset" height="400" src="../images/icon.jpeg" width="400" />
+                <div class="stats">
+                    <div class="number">
+                        10230
+                    </div>
+                    <div class="text">
+                        Palabras Agregadas
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 
     <script>
         function handleClick() {
