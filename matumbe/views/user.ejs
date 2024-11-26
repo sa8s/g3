@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -116,6 +117,19 @@
             background-color: #ff4d4d;
             color: white;
         }
+
+        .btns-div {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .btns-div {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            gap: 20px;
+        }
     </style>
 </head>
 
@@ -127,44 +141,50 @@
             <b><a href="./add">Agregar palabras</a></b>
             <a href="./speak">Pronunciación</a>
         </div>
-        <div onclick="handleClick()" class="profile">DM</div>
+        <div onclick="handleClick()" class="profile"><%= initial %></div>
     </div>
 
     <div class="container">
         <div class="profile-card">
             <div class="profile-header">
-                <div class="profile avatar">DM</div>
+                <div class="profile avatar"><%= initial %></div>
                 <div class="info">
-                    <div class="name">Usuario 1</div>
-                    <div class="email">usuario1@gmail.com</div>
+                    <div class="name"><%= name %> <%= lastname %></div>
+                    <div class="email"><%= email %></div>
                 </div>
             </div>
-            <div class="form">
-                <div class="input-group">
-                    <label for="nombre">NOMBRE</label>
-                    <input type="text" id="nombre">
-                </div>
-                <div class="input-group">
-                    <label for="apellido">APELLIDO</label>
-                    <input type="text" id="apellido">
-                </div>
-                <div class="input-group">
-                    <label for="palabras-favoritas">PALABRAS FAVORITAS</label>
-                    <input type="text" id="palabras-favoritas">
-                </div>
-                <div class="input-group">
-                    <label for="localidad">LOCALIDAD</label>
-                    <input type="text" id="localidad">
-                </div>
-                <div class="input-group full-width">
-                    <button class="btn save"><b>LIBRETA</b></button>
-                </div>
-                <form action="/signout" method="POST">
-                    <div class="input-group full-width">
-                        <button type="submit" class="btn logout"><b>CERRAR SESIÓN</b></button>
+            <form action="/users" method="POST">
+                <div class="form">
+                    <div class="input-group">
+                        <label for="nombre">NOMBRE</label>
+                        <input type="text" name="name" value="<%= name %>">
                     </div>
-                </form>
-            </div>
+                    <div class="input-group">
+                        <label for="apellido">APELLIDO</label>
+                        <input type="text" name="lastname" value="<%= lastname %>">
+                    </div>
+                    <div class="input-group">
+                        <label for="palabras-favoritas">PALABRAS FAVORITAS</label>
+                        <input type="text" name="palabras-favoritas">
+                    </div>
+                    <div class="input-group">
+                        <label for="localidad">LOCALIDAD</label>
+                        <input type="text" name="locality" value="<%= locality %>">
+                    </div>
+
+                </div>
+                <div class="btns-div">
+                    <form action="/signout" method="POST">
+                        <div class="input-group full-width">
+                            <button type="submit" class="btn logout"><b>CERRAR SESIÓN</b></button>
+                        </div>
+                    </form>
+
+                    <div class="input-group full-width">
+                        <button type="submit" class="btn save"><b>Actualizar Perfil</b></button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
