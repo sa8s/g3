@@ -7,6 +7,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/styles.css">
+    <link ref="stylesheet" type="text/css" href="dist/snackbar.min.css" /> <script src="dist/snackbar.min.js"></script>
     <style>
         body {
             display: flex;
@@ -91,11 +92,13 @@
         <h2>
             Inicia Sesión
         </h2>
-        <input placeholder="Email" type="text" />
-        <input placeholder="Contraseña" type="password" />
-        <button onclick="location.href='./translate'">
-            Ingresar
-        </button>
+        <form action="/login" class="validated-form" method="POST" novalidate>
+            <input name="email" placeholder="Email" type="text" />
+            <input name="password" placeholder="Contraseña" type="password" />
+            <button type="submit" onclick="location.href='./translate'">
+                Ingresar
+            </button>
+        </form>
         <p class="small">
             O ingresa con
         </p>

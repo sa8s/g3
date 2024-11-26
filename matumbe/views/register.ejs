@@ -1,8 +1,11 @@
+<!DOCTYPE html>
 <html>
 
 <head>
     <title>Matumbë</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script>
     <style>
         body,
         html {
@@ -11,7 +14,7 @@
         }
 
         .bg {
-            background-image: url('../images/background-image.jpg');
+            background-image: url('/images/background-image.jpg');
             height: 100%;
             background-position: center;
             background-repeat: no-repeat;
@@ -73,26 +76,37 @@
     <div class="bg">
         <div class="content">
             <div class="form-container">
-                <h2>¡Unete!</h2>
-                <form>
+                <h2>¡Únete!</h2>
+                <form action="/register" class="validated-form" method="POST">
                     <div>
-                        <input type="text" placeholder="Email">
-                        <input type="text" placeholder="Nombre">
+                        <input type="text" name="email" placeholder="Email" id="email" required>
+                        <input type="text" name="name" placeholder="Nombre">
                     </div>
                     <div>
-                        <input type="password" placeholder="Contraseña">
-                        <input type="text" placeholder="Localidad">
+                        <input type="password" name="password" placeholder="Contraseña" id="password" required>
+                        <input type="text" name="location" placeholder="Localidad">
                     </div>
                     <div>
-                        <button type="button" class="cancel-btn" onclick="location.href='./'">Cancelar</button>
-                        <button type="button" class="register-btn" onclick="location.href='./translate'">Registrarse</button>
+                        <button type="button" class="cancel-btn" onclick="location.href='/index.ejs'">Cancelar</button>
+                        <button type="submit" class="register-btn">Registrarse</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-
+    <% if (errorMessage) { %>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Snackbar.show({
+                text: '<%= errorMessage %>',
+                pos: 'top-center',
+                backgroundColor: '#e74c3c',
+                actionTextColor: '#ffffff'
+            });
+        });
+    </script>
+    <% } %>
 </body>
 
 </html>
