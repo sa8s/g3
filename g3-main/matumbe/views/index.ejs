@@ -1,0 +1,118 @@
+<html>
+
+<head>
+    <title>
+        Matumbë - Inicia Sesión
+    </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/styles.css">
+    <link ref="stylesheet" type="text/css" href="dist/snackbar.min.css" /> <script src="dist/snackbar.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('../images/background-image.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .title {
+            position: absolute;
+            top: 20px;
+            left: 100px;
+            font-size: 5rem;
+            color: white;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            width: 300px;
+        }
+
+        .container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .container input[type="text"],
+        .container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0024A4;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .container button.google {
+            background-color: white;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container button.google img {
+            margin-right: 10px;
+        }
+
+        .small {
+            margin: 10px 0;
+            font-size: 0.7rem;
+        }
+
+        .container a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">
+        Matumbë
+    </div>
+    <div class="container">
+        <h2>
+            Inicia Sesión
+        </h2>
+        <form action="/login" class="validated-form" method="POST" novalidate>
+            <input name="email" placeholder="Email" type="text" />
+            <input name="password" placeholder="Contraseña" type="password" />
+            <button type="submit" onclick="location.href='./translate'">
+                Ingresar
+            </button>
+        </form>
+        <p class="small">
+            O ingresa con
+        </p>
+        <button class="google">
+            <img alt="Google logo" height="20" src="../images/google-logo.png" width="20" />
+            Ingresa con Google
+        </button>
+        <p>
+            ¿No tienes cuenta?
+            <a href="register">
+                Regístrate
+            </a>
+        </p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+<div id="pronunciation-module">
+    <h1>Módulo de Pronunciación</h1>
+    <input type="text" id="wordInput" placeholder="Escribe la palabra aquí">
+    <div id="controls">
+        <button id="recordBtn">Grabar</button>
+        <button id="stopBtn" disabled>Detener</button>
+        <button id="uploadBtn" disabled>Subir</button>
+    </div>
+    <audio id="audioPreview" controls></audio>
+</div>

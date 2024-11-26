@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Responsivo</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+
+        .item {
+            flex: 1 1 200px;
+            background-color: #fff;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .item:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Media Query para pantallas pequeñas (móviles) */
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .item {
+                flex: 1 1 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Mi Sitio Responsivo</h1>
+</header>
+
+<div class="container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+</div>
+
+<footer>
+    <p>© 2024 Mi Empresa</p>
+</footer>
+
+</body>
+</html>

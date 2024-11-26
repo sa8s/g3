@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matumbe</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 40px 20px;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            margin-bottom: 20px;
+        }
+
+        .form-container h2 {
+            color: #0024A4;
+            margin-bottom: 20px;
+            
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-container select,
+        .form-container input,
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            background-color: #0024A4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .stats-container {
+            width: 48%;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .stats-container img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .stats-container .stats {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .stats-container .stats .number {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #0024A4;
+        }
+
+        .stats-container .stats .text {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .form-container,
+            .stats-container {
+                width: 90%;
+            }
+
+            .form-container h2 {
+                font-size: 1.4rem;
+            }
+
+            .stats-container .stats .number {
+                font-size: 3rem;
+            }
+
+            .stats-container .stats .text {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Estilos para pantallas más pequeñas (móviles) */
+        @media (max-width: 480px) {
+            .form-container h2 {
+                font-size: 1.2rem;
+            }
+
+            .stats-container .stats .number {
+                font-size: 2.5rem;
+            }
+
+            .stats-container .stats .text {
+                font-size: 1.6rem;
+            }
+
+            .form-container button {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo">Matumbe</div>
+        <div class="nav">
+            <a href="./translate">Traductor</a>
+            <b><a href="./add">Agregar palabras</a></b>
+            <a href="./speak">Pronunciación</a>
+        </div>
+        <div onclick="handleClick()" class="profile">DM</div>
+    </div>
+    <div class="container">
+        <div class="form-container">
+            <h2>¡Añade palabras nuevas!</h2>
+            <label for="language">Idioma original:</label>
+            <select id="language">
+                <option>Español</option>
+            </select>
+            <label for="word">Palabra</label>
+            <input id="word" type="text" />
+            <label for="translation">Traducción (en Kamëntsá)</label>
+            <input id="translation" type="text" />
+            <label for="meaning">Significado</label>
+            <textarea id="meaning"></textarea>
+            <button>Agregar</button>
+        </div>
+        <div class="stats-container">
+            <img alt="Image of a forest with a sunset" height="400" src="../images/icon.jpeg" width="400" />
+            <div class="stats">
+                <div class="number">10230</div>
+                <div class="text">Palabras Agregadas</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleClick() {
+            window.location.href = './user'
+        }
+    </script>
+</body>
+
+</html>
