@@ -24,9 +24,6 @@ build/
 .env.local
 .env.*.local
 
-# Firebase service account key
-serviceAccountKey.json
-
 # IDEs and editors
 .vscode/
 .idea/
