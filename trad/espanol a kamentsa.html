@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor de Inglés a Español</title>
+    <script>
+        const traducciones = [
+            { kamentsa: "Hi", espanol: "Hola", pronunciacion: "[o-la]" },
+            { kamentsa: "Bye", espanol: "Adiós", pronunciacion: "[a-dios]" },
+            { kamentsa: "Thanks", espanol: "Gracias", pronunciacion: "[gra-thias]" },
+            { kamentsa: "Please", espanol: "Por favor", pronunciacion: "[por fa-vor]" },
+            { kamentsa: "Yes", espanol: "Sí", pronunciacion: "[si]" },
+        ];
+        function mostrarResultado() {
+            const textoEspanol = document.getElementById('texto-espanol').value;
+            const textoKamentsa = document.getElementById('texto-kamentsa');
+            const pronunciacion = document.getElementById('pronunciacion');
+
+            
+            const textoNormalizado = textoEspanol.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+         
+            const resultado = traducciones.find(item => 
+                item.espanol.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() === textoNormalizado
+            );
+
+            if (resultado) {
+                textoKamentsa.value = resultado.kamentsa; 
+                pronunciacion.value = resultado.pronunciacionEspanol; 
+            } else {
+                textoKamentsa.value = "";
+                pronunciacion.value = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Traductor de Español a Kamentsa</h1>
+    <form onsubmit="event.preventDefault();">
+        <label for="texto-espanol">Texto en Español:</label><br>
+        <textarea id="texto-espanol" rows="4" cols="50" placeholder="Escribe aquí..." oninput="mostrarResultado()"></textarea><br><br>
+        
+        <label for="texto-kamentsa">Texto en Kamentsa:</label><br>
+        <textarea id="texto-kamentsa" rows="4" cols="50" placeholder="El resultado aparecerá aquí..." readonly></textarea><br><br>
+
+        <label for="pronunciacion">Pronunciación:</label><br>
+        <textarea id="pronunciacion" rows="2" cols="50" placeholder="Pronunciación aparecerá aquí..." readonly></textarea><br><br>
+        
+        <button type="submit">Traducir</button>
+        <button onclick="window.location.href='kamentsa a espanol.html'; return false;">Kamentsa a Español</button>
+    </form>
+</body>
+
+</html>
