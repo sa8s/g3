@@ -1,0 +1,20 @@
+# 1. Inicializar el repositorio
+git init
+
+# 2. Verificar el estado de los archivos
+git status
+
+# 3. Agregar todos los archivos para el commit
+git add .
+
+# 4. Realizar el primer commit
+git commit -m "Se ha iniciado la estructura de carpetas del proyecto Hotelia"
+
+# 5. Enlazar el repositorio local con el repositorio remoto en GitHub
+git remote add origin https://github.com/janier/TALLER_0_Maquetación_Responsive.git
+
+# 6. Verificar el enlace del repositorio remoto (opcional)
+git remote -v
+
+# 7. Subir los cambios al repositorio remoto
+git push -u origin master
