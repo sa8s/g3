@@ -1,0 +1,28 @@
+# 7. Comprobar que el repositorio ha sido enlazado
+git remote -v
+
+# 8. Subir los cambios a la rama master en el repositorio remoto
+git push -u origin master
+
+# 10. Crear una nueva rama con tu nombre (por ejemplo, tlcabrera) y cambiarte a ella
+git branch tlcabrera   # Crear la rama
+git checkout tlcabrera # Cambiar a la rama tlcabrera
+
+# Alternativa: crear y cambiar a la rama en un solo paso
+git checkout -b tlcabrera
+
+# 11. Descargar los recursos de imagen y moverlos a la carpeta images
+# (Ejemplo: mover una imagen descargada a la carpeta 'images')
+mv /ruta/de/tu/imagen.jpg ./images/
+
+
+<!-- 13. Enlazar el archivo responsive.css en index.html -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive FlexBox</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css"> <!-- Nuevo archivo de estilos -->
+</head>
+

@@ -1,0 +1,136 @@
+
+//primer punto
+
+taller0/
+│
+├── index.html
+├── styles/
+│   ├── main.css
+│   └── reset.css
+├── images/
+│   └── logo.png
+└── README.md
+
+//creación de los archivos(bash)
+
+# aquí se crea la carpeta principal
+mkdir taller0
+cd taller0
+
+# se crea el archivo HTML y las subcarpetas
+touch index.html
+mkdir styles images
+
+# Crear los archivos CSS
+touch styles/main.css styles/reset.css
+
+# Crear el archivo de imagen (solo si tienes un logo para agregar)
+# cp /ruta/a/tu/logo.png images/logo.png
+
+# Crear el archivo README
+touch README.md
+
+// contenido como básico de los archivos
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive FlexBox</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="Logo">
+        <h1>Bienvenido a Taller de Maquetación Responsive</h1>
+    </header>
+
+    <main>
+        <section class="contenido">
+            <div class="card">
+                <h2>Card 1</h2>
+                <p>Contenido de la primera card.</p>
+            </div>
+            <div class="card">
+                <h2>Card 2</h2>
+                <p>Contenido de la segunda card.</p>
+            </div>
+            <div class="card">
+                <h2>Card 3</h2>
+                <p>Contenido de la tercera card.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+
+
+//reset.css
+/* Reset de márgenes y paddings comunes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Establecer el font-family para toda la página */
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+// flexbox
+
+
+/* Estilos generales */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Estilo para el header */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #007BFF;
+    color: white;
+}
+
+header img {
+    width: 100px;
+}
+
+/* Contenedor de las cards con Flexbox */
+.contenido {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 30%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px;
+}
+
+/* Estilo responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+}
+
+
